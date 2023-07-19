@@ -8,8 +8,21 @@ on:
     branches: [ main, itests-playground ]
   pull_request:
     branches: [ main, itests-playground ]
+  workflow_dispatch:
 
 jobs:
+  save_secret:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Save Secret to File
+        run: echo "${{ secrets.TEST_SECRET }}" > test.key
+
+      - name: Print to stdout
+        run: cat test.key
   configure_sonar:
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
