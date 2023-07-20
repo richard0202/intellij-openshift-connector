@@ -90,6 +90,17 @@ tasks.register('integrationTest', Test) {
 
 tasks.register('integrationUITest', Test) {
     dependsOn copyKey
+    doFirst {
+        def folderPath = 'build/idea-sandbox/config-uiTest'
+        def folder = project.file(folderPath)
+        if (folder.exists()) {
+            folder.eachFile { file ->
+                println("File: ${file.name}")
+            }
+        } else {
+            println("Folder not found: ${folderPath}")
+        }
+    }
     useJUnitPlatform {
         includeTags 'ui-test'
     }
