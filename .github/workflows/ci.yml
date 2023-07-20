@@ -87,7 +87,7 @@ jobs:
       - name: Play integration tests
         run: ./gradlew integrationTest --continue --no-daemon
       - name: Decrypt idea.key
-        run: gpg --decrypt --passphrase "${{ secrets.IDEA_KEY_PASSPHRASE }}" --output idea.key idea.key.gpg
+        run: echo "${{ secrets.IDEA_KEY_PASSPHRASE }}" | gpg --decrypt --passphrase-fd 0 --pinentry-mode loopback --output idea_license_token/idea.key idea_license_token/idea.key.gpg
       - name: Play integration UI tests
         run: ./gradlew integrationUITest --continue
       - uses: actions/upload-artifact@v3
