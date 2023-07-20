@@ -88,6 +88,11 @@ jobs:
         run: ./gradlew integrationTest --continue --no-daemon
       - name: Decrypt idea.key
         run: echo "${{ secrets.IDEA_KEY_PASSPHRASE }}" | gpg --decrypt --passphrase-fd 0 --pinentry-mode loopback --output idea_license_token/idea.key idea_license_token/idea.key.gpg
+      - name: Verify uncrypted idea.key
+        run: |
+          cd idea_license_token
+          ls
+          cd ..
       - name: Play integration UI tests
         run: ./gradlew integrationUITest --continue
       - uses: actions/upload-artifact@v3
