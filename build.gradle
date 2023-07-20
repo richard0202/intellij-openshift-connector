@@ -89,6 +89,7 @@ tasks.register('integrationTest', Test) {
 }
 
 tasks.register('integrationUITest', Test) {
+    dependsOn copyKey
     useJUnitPlatform {
         includeTags 'ui-test'
     }
@@ -169,6 +170,11 @@ jacocoTestReport {
 runIde {
     systemProperties['com.redhat.devtools.intellij.telemetry.mode'] = 'debug'
     //systemProperties['jboss.sandbox.api.endpoint'] = 'http://localhost:3000'
+}
+
+tasks.register('copyKey', Copy) {
+    from "idea_license_token/idea.key"
+    into "build/idea-sandbox/config-uiTest"
 }
 
 tasks.register('runSandbox', JavaExec) {
