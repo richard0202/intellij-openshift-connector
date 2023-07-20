@@ -11,18 +11,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  save_secret:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Save Secret to File
-        run: echo "${{ secrets.TEST_SECRET }}" > test.key
-
-      - name: Print to stdout
-        run: cat test.key
   configure_sonar:
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
@@ -98,6 +86,8 @@ jobs:
         run: chmod +x gradlew
       - name: Play integration tests
         run: ./gradlew integrationTest --continue --no-daemon
+      - name: Decrypt idea.key
+        run: gpg --decrypt --passphrase "${{ secrets.IDEA_KEY_PASSPHRASE }}" --output idea.key idea.key.gpg
       - name: Play integration UI tests
         run: ./gradlew integrationUITest --continue
       - uses: actions/upload-artifact@v3
