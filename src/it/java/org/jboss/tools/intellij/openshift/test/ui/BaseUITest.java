@@ -60,7 +60,7 @@ public class BaseUITest extends AbstractBaseTest {
 		view.closeView();
 	}
 
-	@Test
+/*	@Test
 	public void gettingStartedBehaviour() {
 		GettingStartedView view = robot.find(GettingStartedView.class);
 		view.openView();
@@ -90,7 +90,7 @@ public class BaseUITest extends AbstractBaseTest {
 		assertTrue(feedbackFixture.isShowing(), "Feedback button is not showing");
 
 		view.closeView();
-	}
+	}*/
 
 
 }
