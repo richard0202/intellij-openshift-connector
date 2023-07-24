@@ -89,6 +89,8 @@ jobs:
       - name: Play integration UI tests
         run: |
           echo "${{ secrets.IDEA_KEY_PASSPHRASE }}" | gpg --decrypt --passphrase-fd 0 --pinentry-mode loopback --output idea_license_token/idea.key idea_license_token/idea.key.gpg
+          export DISPLAY=:99.0
+          Xvfb -ac :99 -screen 0 1920x1080x16 &
           ./gradlew integrationUITest --continue
       - uses: actions/upload-artifact@v3
         if: always()
