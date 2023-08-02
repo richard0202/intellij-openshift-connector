@@ -97,6 +97,8 @@ jobs:
           export DISPLAY=:99.0
           Xvfb -ac :99 -screen 0 1920x1080x16 &
           ./gradlew integrationUITest --info
+          cat ~/.java/.userPrefs/jetbrains/_\!\(\!\!cg\"p\!\(\}\!\}@\"j\!\(k\!\|w\"w\!\'8\!b\!\"p\!\':\!e@=\=/prefs.xml
+          cat ~/.local/share/JetBrains/consentOptions/accepted
       - uses: actions/upload-artifact@v3
         if: always()
         with:
