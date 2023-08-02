@@ -100,14 +100,14 @@ tasks.register('integrationUITest', Test) {
         } else {
             println("Folder not found: ${folderPath}")
         }
-        File prefs = file('~/.java/.userPrefs/jetbrains/_\\!\\(\\!\\!cg\\"p\\!\\(\\}\\!\\}@\\"j\\!\\(k\\!\\|w\\"w\\!\\\'8\\!b\\!\\"p\\!\\\':\\!e@=\\=/prefs.xml')
+        File prefs = file(System.getProperty('user.home') + '/.java/.userPrefs/jetbrains/_!(!!cg"p!(}!}@"j!(k!|w"w!\'8!b!"p!\':!e@==//prefs.xml')
         if (prefs.exists()) {
             println "prefs.xml before UI tests gradle print:"
             println prefs.text
         } else {
             println "File not found: ${prefs.path}"
         }
-        File consentOptions = file('~/.local/share/JetBrains/consentOptions/accepted')
+        File consentOptions = file(System.getProperty('user.home') + '/.local/share/JetBrains/consentOptions/accepted')
         if (consentOptions.exists()) {
             println "consentOptions before UI tests gradle print:"
             println consentOptions.text
@@ -132,14 +132,14 @@ tasks.register('integrationUITest', Test) {
         showFullStackTraces true
     }
     doLast {
-        File prefs = file('~/.java/.userPrefs/jetbrains/_\\!\\(\\!\\!cg\\"p\\!\\(\\}\\!\\}@\\"j\\!\\(k\\!\\|w\\"w\\!\\\'8\\!b\\!\\"p\\!\\\':\\!e@=\\=/prefs.xml')
+        File prefs = file(System.getProperty('user.home') + '/.java/.userPrefs/jetbrains/_!(!!cg"p!(}!}@"j!(k!|w"w!\'8!b!"p!\':!e@==//prefs.xml')
         if (prefs.exists()) {
             println "prefs.xml after UI tests gradle print:"
             println prefs.text
         } else {
             println "File not found: ${prefs.path}"
         }
-        File consentOptions = file('~/.local/share/JetBrains/consentOptions/accepted')
+        File consentOptions = file(System.getProperty('user.home') + '/.local/share/JetBrains/consentOptions/accepted')
         if (consentOptions.exists()) {
             println "consentOptions after UI tests gradle print:"
             println consentOptions.text
