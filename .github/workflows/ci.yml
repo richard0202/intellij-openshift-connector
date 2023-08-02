@@ -96,8 +96,14 @@ jobs:
           cp .github/workflows/accepted ~/.local/share/JetBrains/consentOptions
           export DISPLAY=:99.0
           Xvfb -ac :99 -screen 0 1920x1080x16 &
-          ./gradlew integrationUITest --info
+          echo "Printing prefs.xml before gradle task:"
           cat ~/.java/.userPrefs/jetbrains/_\!\(\!\!cg\"p\!\(\}\!\}@\"j\!\(k\!\|w\"w\!\'8\!b\!\"p\!\':\!e@=\=/prefs.xml
+          echo "Printing consentOptions before gradle task:\n"
+          cat ~/.local/share/JetBrains/consentOptions/accepted
+          ./gradlew integrationUITest --info
+          echo "Printing prefs.xml after gradle task:"
+          cat ~/.java/.userPrefs/jetbrains/_\!\(\!\!cg\"p\!\(\}\!\}@\"j\!\(k\!\|w\"w\!\'8\!b\!\"p\!\':\!e@=\=/prefs.xml
+          echo "Printing consentOptions after gradle task:"
           cat ~/.local/share/JetBrains/consentOptions/accepted
       - uses: actions/upload-artifact@v3
         if: always()
