@@ -84,7 +84,7 @@ jobs:
 #          done
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-      #- name: Play integration tests
+      #- name: Play integration tests#
       #  run: ./gradlew integrationTest --continue --no-daemon
       - name: Play integration UI tests
         run: |
