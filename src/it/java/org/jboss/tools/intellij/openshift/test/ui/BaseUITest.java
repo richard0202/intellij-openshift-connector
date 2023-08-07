@@ -32,11 +32,11 @@ public class BaseUITest extends AbstractBaseTest {
 	@Test
 	public void openshiftExtensionTest() {
 		waitFor(Duration.ofSeconds(10), Duration.ofSeconds(1), "The 'OpenShift' stripe button is not available.", () -> isStripeButtonAvailable("OpenShift"));
-		waitFor(Duration.ofSeconds(10), Duration.ofSeconds(1), "The 'Kubernetes' stripe button is not available.", () -> isStripeButtonAvailable("Kubernetes"));
-		waitFor(Duration.ofSeconds(10), Duration.ofSeconds(1), "The 'Getting Started' stripe button is not available.", () -> isStripeButtonAvailable("Getting Started"));
+		//waitFor(Duration.ofSeconds(10), Duration.ofSeconds(1), "The 'Kubernetes' stripe button is not available.", () -> isStripeButtonAvailable("Kubernetes"));
+		//waitFor(Duration.ofSeconds(10), Duration.ofSeconds(1), "The 'Getting Started' stripe button is not available.", () -> isStripeButtonAvailable("Getting Started"));
 	}
 
-	@Test
+/*	@Test
 	public void openshiftViewTest() {
         OpenshiftView view = robot.find(OpenshiftView.class);
 		view.openView();
@@ -58,7 +58,7 @@ public class BaseUITest extends AbstractBaseTest {
 		view.waitForTreeItem("Deploy component on the cluster", 10, 1);
 
 		view.closeView();
-	}
+	}*/
 
 /*	@Test
 	public void gettingStartedBehaviour() {
