@@ -101,6 +101,7 @@ jobs:
           echo "Printing consentOptions before gradle task:\n"
           cat ~/.local/share/JetBrains/consentOptions/accepted
           ./gradlew integrationUITest --info --continue
+          ./gradlew integrationUITest --info --continue
           echo "Printing prefs.xml after gradle task:"
           cat ~/.java/.userPrefs/jetbrains/_\!\(\!\!cg\"p\!\(\}\!\}@\"j\!\(k\!\|w\"w\!\'8\!b\!\"p\!\':\!e@=\=/prefs.xml
           echo "Printing consentOptions after gradle task:"
