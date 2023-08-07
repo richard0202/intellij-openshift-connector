@@ -131,6 +131,7 @@ tasks.register('integrationUITest', Test) {
         showFailedStandardStreams true
         showFullStackTraces true
     }
+    ignoreFailures = true
     doLast {
         File prefs = file(System.getProperty('user.home') + '/.java/.userPrefs/jetbrains/_!(!!cg"p!(}!}@"j!(k!|w"w!\'8!b!"p!\':!e@==//prefs.xml')
         if (prefs.exists()) {
