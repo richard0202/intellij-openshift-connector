@@ -100,6 +100,15 @@ tasks.register('integrationUITest', Test) {
         } else {
             println("Folder not found: ${folderPath}")
         }
+        def folderPathBuild = 'build'
+        def folderBuild = project.file(folderPathBuild)
+        if (folderBuild.exists()) {
+            folderBuild.eachFile { file ->
+                println("File: ${file.name}")
+            }
+        } else {
+            println("Folder not found: ${folderPathBuild}")
+        }
         File prefs = file(System.getProperty('user.home') + '/.java/.userPrefs/jetbrains/_!(!!cg"p!(}!}@"j!(k!|w"w!\'8!b!"p!\':!e@==//prefs.xml')
         if (prefs.exists()) {
             println "prefs.xml before UI tests gradle print:"
@@ -131,7 +140,6 @@ tasks.register('integrationUITest', Test) {
         showFailedStandardStreams true
         showFullStackTraces true
     }
-    ignoreFailures = true
     doLast {
         File prefs = file(System.getProperty('user.home') + '/.java/.userPrefs/jetbrains/_!(!!cg"p!(}!}@"j!(k!|w"w!\'8!b!"p!\':!e@==//prefs.xml')
         if (prefs.exists()) {
@@ -169,7 +177,7 @@ dependencies {
             'org.awaitility:awaitility:4.1.0',
             'org.mock-server:mockserver-client-java:5.15.0',
             'org.mock-server:mockserver-netty:5.15.0',
-            'com.redhat.devtools.intellij:intellij-common-ui-test-library:0.2.0',
+            'com.redhat.devtools.intellij:intellij-common-ui-test-library:0.2.1-SNAPSHOT-3',
             'org.junit.jupiter:junit-jupiter-engine:5.8.2',
             'org.junit.jupiter:junit-jupiter-api:5.8.2',
             'org.junit.jupiter:junit-jupiter:5.8.2',

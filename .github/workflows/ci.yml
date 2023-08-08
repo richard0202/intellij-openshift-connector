@@ -100,7 +100,8 @@ jobs:
           cat ~/.java/.userPrefs/jetbrains/_\!\(\!\!cg\"p\!\(\}\!\}@\"j\!\(k\!\|w\"w\!\'8\!b\!\"p\!\':\!e@=\=/prefs.xml
           echo "Printing consentOptions before gradle task:\n"
           cat ~/.local/share/JetBrains/consentOptions/accepted
-          ./gradlew integrationUITest --info --continue
+          mkdir build
+          cp lib/intellij-common-ui-test-library-0.2.1-SNAPSHOT-3.jar build
           ./gradlew integrationUITest --info --continue
           echo "Printing prefs.xml after gradle task:"
           cat ~/.java/.userPrefs/jetbrains/_\!\(\!\!cg\"p\!\(\}\!\}@\"j\!\(k\!\|w\"w\!\'8\!b\!\"p\!\':\!e@=\=/prefs.xml
