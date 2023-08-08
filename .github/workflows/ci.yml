@@ -41,6 +41,14 @@ jobs:
           java-version: 17
           distribution: 'temurin'
           cache: 'gradle'
+      - name: 'Clone common-ui-test-library to Maven Local repository'
+        run: |
+            git clone --branch extended-timeout https://github.com/richard0202/intellij-common-ui-test-library.git ../common-ui-test-library
+      - uses: burrunan/gradle-cache-action@v1
+        name: Build common-ui-test-library
+        with:
+            build-root-directory: ../common-ui-test-library
+            arguments: publishToMavenLocal
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Build with Gradle
@@ -89,6 +97,14 @@ jobs:
         run: chmod +x gradlew
       #- name: Play integration tests#
       #  run: ./gradlew integrationTest --continue --no-daemon
+      - name: 'Clone common-ui-test-library to Maven Local repository'
+        run: |
+          git clone --branch extended-timeout https://github.com/richard0202/intellij-common-ui-test-library.git ../common-ui-test-library
+      - uses: burrunan/gradle-cache-action@v1
+        name: Build common-ui-test-library
+        with:
+          build-root-directory: ../common-ui-test-library
+          arguments: publishToMavenLocal
       - name: Play integration UI tests
         run: |
           echo "${{ secrets.IDEA_KEY_PASSPHRASE }}" | gpg --decrypt --passphrase-fd 0 --pinentry-mode loopback --output idea_license_token/idea.key idea_license_token/idea.key.gpg
@@ -103,8 +119,6 @@ jobs:
           cat ~/.java/.userPrefs/jetbrains/_\!\(\!\!cg\"p\!\(\}\!\}@\"j\!\(k\!\|w\"w\!\'8\!b\!\"p\!\':\!e@=\=/prefs.xml
           echo "Printing consentOptions before gradle task:\n"
           cat ~/.local/share/JetBrains/consentOptions/accepted
-          mkdir build
-          cp lib/intellij-common-ui-test-library-0.2.1-SNAPSHOT-3.jar build
           ./gradlew integrationUITest --info --continue
           echo "Printing prefs.xml after gradle task:"
           cat ~/.java/.userPrefs/jetbrains/_\!\(\!\!cg\"p\!\(\}\!\}@\"j\!\(k\!\|w\"w\!\'8\!b\!\"p\!\':\!e@=\=/prefs.xml
