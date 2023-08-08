@@ -44,7 +44,10 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Build with Gradle
-        run: ./gradlew build --continue --no-daemon
+        run: | 
+          mkdir build
+          cp lib/intellij-common-ui-test-library-0.2.1-SNAPSHOT-3.jar build
+          ./gradlew build --continue --no-daemon
       - uses: actions/upload-artifact@v3
         if: always()
         with:
