@@ -133,6 +133,12 @@ jobs:
           cat ~/.java/.userPrefs/jetbrains/_\!\(\!\!cg\"p\!\(\}\!\}@\"j\!\(k\!\|w\"w\!\'8\!b\!\"p\!\':\!e@=\=/prefs.xml
           echo "Printing consentOptions after gradle task:"
           cat ~/.local/share/JetBrains/consentOptions/accepted
+          echo "ls command"
+          ls -la
+          echo "Printing subprocess stdout:"
+          cat debug/stdout.log
+          echo "Printing subprocess stderr:"
+          cat debug/stderr.log
       - uses: actions/upload-artifact@v3
         if: always()
         with:
