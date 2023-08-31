@@ -136,9 +136,9 @@ jobs:
           echo "ls command"
           ls -la
           echo "Printing subprocess stdout:"
-          cat debug/stdout.log
+          cat ~/debug/stdout.log
           echo "Printing subprocess stderr:"
-          cat debug/stderr.log
+          cat ~/debug/stderr.log
       - uses: actions/upload-artifact@v3
         if: always()
         with:
