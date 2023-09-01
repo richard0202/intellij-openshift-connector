@@ -124,6 +124,7 @@ jobs:
           cp .github/workflows/accepted ~/.local/share/JetBrains/consentOptions
           export DISPLAY=:99.0
           Xvfb -ac :99 -screen 0 1920x1080x16 &
+          sleep 60
           echo "Printing prefs.xml before gradle task:"
           cat ~/.java/.userPrefs/jetbrains/_\!\(\!\!cg\"p\!\(\}\!\}@\"j\!\(k\!\|w\"w\!\'8\!b\!\"p\!\':\!e@=\=/prefs.xml
           echo "Printing consentOptions before gradle task:\n"
@@ -133,8 +134,6 @@ jobs:
           cat ~/.java/.userPrefs/jetbrains/_\!\(\!\!cg\"p\!\(\}\!\}@\"j\!\(k\!\|w\"w\!\'8\!b\!\"p\!\':\!e@=\=/prefs.xml
           echo "Printing consentOptions after gradle task:"
           cat ~/.local/share/JetBrains/consentOptions/accepted
-          echo "ls command"
-          ls -la
           echo "Printing subprocess stdout:"
           cat ~/debug/stdout.log
           echo "Printing subprocess stderr:"
