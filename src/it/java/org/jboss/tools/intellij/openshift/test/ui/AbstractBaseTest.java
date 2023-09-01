@@ -13,6 +13,7 @@ package org.jboss.tools.intellij.openshift.test.ui;
 import com.intellij.remoterobot.RemoteRobot;
 import com.intellij.remoterobot.utils.WaitForConditionTimeoutException;
 import com.redhat.devtools.intellij.commonuitest.fixtures.mainidewindow.idestatusbar.IdeStatusBar;
+import com.redhat.devtools.intellij.commonuitest.fixtures.mainidewindow.toolwindowspane.ToolWindowPane;
 import com.redhat.devtools.intellij.commonuitest.fixtures.mainidewindow.toolwindowspane.ToolWindowsPane;
 import org.jboss.tools.intellij.openshift.test.ui.dialogs.ProjectStructureDialog;
 import org.jboss.tools.intellij.openshift.test.ui.junit.TestRunnerExtension;
@@ -50,8 +51,8 @@ abstract public class AbstractBaseTest {
 
     public boolean isStripeButtonAvailable(String label) {
         try {
-            ToolWindowsPane toolWindowsPane = robot.find(ToolWindowsPane.class);
-            toolWindowsPane.stripeButton(label, false);
+            ToolWindowPane toolWindowPane = robot.find(ToolWindowPane.class);
+            toolWindowPane.stripeButton(label, false);
         } catch (WaitForConditionTimeoutException e) {
             return false;
         }

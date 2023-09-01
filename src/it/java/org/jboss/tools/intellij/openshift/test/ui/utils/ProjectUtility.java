@@ -45,7 +45,6 @@ public class ProjectUtility {
         flatWelcomeFrame.createNewProject();
         final NewProjectDialogWizard newProjectDialogWizard = flatWelcomeFrame.find(NewProjectDialogWizard.class, Duration.ofSeconds(20));
         selectNewProjectType(robot, "Empty Project");
-        newProjectDialogWizard.next();
         JTextFieldFixture textField = robot.find(JTextFieldFixture.class, byXpath("//div[@visible_text='untitled']"));
         textField.setText(projectName);
         newProjectDialogWizard.finish();
