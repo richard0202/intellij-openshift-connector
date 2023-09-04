@@ -81,7 +81,7 @@ jobs:
           cache: 'gradle'
       - name: 'Clone common-ui-test-library to Maven Local repository'
         run: |
-          git clone --branch itests-playground https://github.com/richard0202/intellij-common-ui-test-library.git ../common-ui-test-library
+          git clone --branch 174 https://github.com/richard0202/intellij-common-ui-test-library.git ../common-ui-test-library
       - uses: burrunan/gradle-cache-action@v1
         name: Build common-ui-test-library
         with:
