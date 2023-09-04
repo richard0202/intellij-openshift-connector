@@ -117,27 +117,10 @@ jobs:
       - name: Play integration UI tests
         run: |
           echo "${{ secrets.IDEA_KEY_PASSPHRASE }}" | gpg --decrypt --passphrase-fd 0 --pinentry-mode loopback --output idea_license_token/idea.key idea_license_token/idea.key.gpg
-          dir=~/.java/.userPrefs/jetbrains/_\!\(\!\!cg\"p\!\(\}\!\}@\"j\!\(k\!\|w\"w\!\'8\!b\!\"p\!\':\!e@=\=
-          mkdir -p "$dir"
-          cp .github/workflows/prefs.xml $dir
-          mkdir -p ~/.local/share/JetBrains/consentOptions
-          cp .github/workflows/accepted ~/.local/share/JetBrains/consentOptions
           export DISPLAY=:99.0
           Xvfb -ac :99 -screen 0 1920x1080x16 &
-          sleep 60
-          echo "Printing prefs.xml before gradle task:"
-          cat ~/.java/.userPrefs/jetbrains/_\!\(\!\!cg\"p\!\(\}\!\}@\"j\!\(k\!\|w\"w\!\'8\!b\!\"p\!\':\!e@=\=/prefs.xml
-          echo "Printing consentOptions before gradle task:\n"
-          cat ~/.local/share/JetBrains/consentOptions/accepted
+          sleep 10
           ./gradlew integrationUITest --info --continue
-          echo "Printing prefs.xml after gradle task:"
-          cat ~/.java/.userPrefs/jetbrains/_\!\(\!\!cg\"p\!\(\}\!\}@\"j\!\(k\!\|w\"w\!\'8\!b\!\"p\!\':\!e@=\=/prefs.xml
-          echo "Printing consentOptions after gradle task:"
-          cat ~/.local/share/JetBrains/consentOptions/accepted
-          echo "Printing subprocess stdout:"
-          cat ~/IntelliJ_debug/stdout.log
-          echo "Printing subprocess stderr:"
-          cat ~/IntelliJ_debug/stderr.log
       - uses: actions/upload-artifact@v3
         if: always()
         with:

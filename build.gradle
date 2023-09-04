@@ -90,31 +90,6 @@ tasks.register('integrationTest', Test) {
 
 tasks.register('integrationUITest', Test) {
     dependsOn copyKey
-    doFirst {
-        def folderPath = 'build/idea-sandbox/config-uiTest'
-        def folder = project.file(folderPath)
-        if (folder.exists()) {
-            folder.eachFile { file ->
-                println("File: ${file.name}")
-            }
-        } else {
-            println("Folder not found: ${folderPath}")
-        }
-        File prefs = file(System.getProperty('user.home') + '/.java/.userPrefs/jetbrains/_!(!!cg"p!(}!}@"j!(k!|w"w!\'8!b!"p!\':!e@==//prefs.xml')
-        if (prefs.exists()) {
-            println "prefs.xml before UI tests gradle print:"
-            println prefs.text
-        } else {
-            println "File not found: ${prefs.path}"
-        }
-        File consentOptions = file(System.getProperty('user.home') + '/.local/share/JetBrains/consentOptions/accepted')
-        if (consentOptions.exists()) {
-            println "consentOptions before UI tests gradle print:"
-            println consentOptions.text
-        } else {
-            println "File not found: ${consentOptions.path}"
-        }
-    }
     useJUnitPlatform {
         includeTags 'ui-test'
     }
@@ -130,22 +105,6 @@ tasks.register('integrationUITest', Test) {
         showSkippedStandardStreams false
         showFailedStandardStreams true
         showFullStackTraces true
-    }
-    doLast {
-        File prefs = file(System.getProperty('user.home') + '/.java/.userPrefs/jetbrains/_!(!!cg"p!(}!}@"j!(k!|w"w!\'8!b!"p!\':!e@==//prefs.xml')
-        if (prefs.exists()) {
-            println "prefs.xml after UI tests gradle print:"
-            println prefs.text
-        } else {
-            println "File not found: ${prefs.path}"
-        }
-        File consentOptions = file(System.getProperty('user.home') + '/.local/share/JetBrains/consentOptions/accepted')
-        if (consentOptions.exists()) {
-            println "consentOptions after UI tests gradle print:"
-            println consentOptions.text
-        } else {
-            println "File not found: ${consentOptions.path}"
-        }
     }
 }
 
