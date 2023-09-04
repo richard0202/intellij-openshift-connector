@@ -38,7 +38,9 @@ abstract public class AbstractBaseTest {
     public static void connect() {
         robot = IdeaRunner.getInstance().getRemoteRobot();
         ProjectUtility.createEmptyProject(robot, "test-project");
-        ProjectUtility.closeTipDialogIfItAppears(robot);
+
+        // TODO fix on IJ Ultimate 2023.2 (it should be possible to set some properties to block Tip Dialogs)
+        // ProjectUtility.closeTipDialogIfItAppears(robot);
         ProjectStructureDialog.cancelProjectStructureDialogIfItAppears(robot);
         ProjectUtility.closeGotItPopup(robot);
         IdeStatusBar ideStatusBar = robot.find(IdeStatusBar.class, Duration.ofSeconds(5));
