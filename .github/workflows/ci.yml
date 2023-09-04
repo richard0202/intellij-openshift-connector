@@ -135,9 +135,9 @@ jobs:
           echo "Printing consentOptions after gradle task:"
           cat ~/.local/share/JetBrains/consentOptions/accepted
           echo "Printing subprocess stdout:"
-          cat ~/debug/stdout.log
+          cat ~/IntelliJ_debug/stdout.log
           echo "Printing subprocess stderr:"
-          cat ~/debug/stderr.log
+          cat ~/IntelliJ_debug/stderr.log
       - uses: actions/upload-artifact@v3
         if: always()
         with:
