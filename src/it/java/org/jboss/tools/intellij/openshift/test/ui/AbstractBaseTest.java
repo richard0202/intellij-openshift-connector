@@ -41,7 +41,9 @@ abstract public class AbstractBaseTest {
 
         // TODO fix on IJ Ultimate 2023.2 (it should be possible to set some properties to block Tip Dialogs)
         // ProjectUtility.closeTipDialogIfItAppears(robot);
-        ProjectStructureDialog.cancelProjectStructureDialogIfItAppears(robot);
+
+        // TODO fix on IJ Ultimate 2023.2
+        //ProjectStructureDialog.cancelProjectStructureDialogIfItAppears(robot);
         ProjectUtility.closeGotItPopup(robot);
         IdeStatusBar ideStatusBar = robot.find(IdeStatusBar.class, Duration.ofSeconds(5));
         ideStatusBar.waitUntilAllBgTasksFinish();
