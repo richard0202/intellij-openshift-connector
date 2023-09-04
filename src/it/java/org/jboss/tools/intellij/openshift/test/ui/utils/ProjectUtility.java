@@ -50,7 +50,7 @@ public class ProjectUtility {
         newProjectDialogWizard.finish();
 
         final IdeStatusBar ideStatusBar = robot.find(IdeStatusBar.class, Duration.ofSeconds(5));
-        ideStatusBar.waitUntilProjectImportIsComplete();
+        //ideStatusBar.waitUntilProjectImportIsComplete(); TODO fix on IJ ULTIMATE 2023.2
     }
 
     public static void selectNewProjectType(RemoteRobot robot, String projectType) {
