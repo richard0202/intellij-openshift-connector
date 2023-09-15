@@ -114,6 +114,8 @@ jobs:
           done
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+      - name: Play integration tests
+        run: ./gradlew integrationTest --continue --no-daemon
       - name: Play integration UI tests
         run: |
           echo "${{ secrets.IDEA_KEY_PASSPHRASE }}" | gpg --decrypt --passphrase-fd 0 --pinentry-mode loopback --output idea_license_token/idea.key idea_license_token/idea.key.gpg
