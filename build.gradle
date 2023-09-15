@@ -172,11 +172,6 @@ runIde {
     //systemProperties['jboss.sandbox.api.endpoint'] = 'http://localhost:3000'
 }
 
-runIdeForUiTests {
-    systemProperty "robot-server.port", System.getProperty("robot-server.port")
-    systemProperties["com.redhat.devtools.intellij.telemetry.mode"] = "debug"
-}
-
 tasks.register('copyKey', Copy) {
     from "idea_license_token/idea.key"
     into "build/idea-sandbox/config-uiTest"
