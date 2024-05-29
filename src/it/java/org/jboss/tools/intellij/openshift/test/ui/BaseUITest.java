@@ -18,6 +18,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static com.intellij.remoterobot.search.locators.Locators.byXpath;
 import static com.intellij.remoterobot.utils.RepeatUtilsKt.waitFor;
@@ -32,6 +34,12 @@ public class BaseUITest extends AbstractBaseTest {
 
 	@Test
 	public void openshiftExtensionTest() {
+		String CLUSTER_URL = System.getenv("CLUSTER_URL");
+
+		String CLUSTER_USER = System.getenv("CLUSTER_USER");
+
+		String CLUSTER_PASSWORD = System.getenv("CLUSTER_PASSWORD");
+		Logger.getLogger("BASEUITest").log(Level.INFO, "CLUSTER_URL: " + CLUSTER_URL + "\nCLUSTER_USER: " + CLUSTER_USER + "\nCLUSTER_PASSWORD: " + CLUSTER_PASSWORD);
 		waitFor(Duration.ofSeconds(10), Duration.ofSeconds(1), "The 'OpenShift' stripe button is not available.", () -> isStripeButtonAvailable("OpenShift"));
 		waitFor(Duration.ofSeconds(10), Duration.ofSeconds(1), "The 'Kubernetes' stripe button is not available.", () -> isStripeButtonAvailable("Kubernetes"));
 		waitFor(Duration.ofSeconds(10), Duration.ofSeconds(1), "The 'Getting Started' stripe button is not available.", () -> isStripeButtonAvailable("Getting Started"));
