@@ -36,6 +36,10 @@ jobs:
             sleep 1
             nb=`kubectl get pods -n operators --no-headers --ignore-not-found | grep Running | wc -l`
           done
+      - name: Access the cluster
+        run: |
+          kubectl cluster-info
+          kubectl get nodes
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Play integration UI tests
