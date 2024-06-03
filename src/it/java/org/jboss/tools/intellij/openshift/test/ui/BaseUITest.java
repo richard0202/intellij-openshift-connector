@@ -12,12 +12,18 @@ package org.jboss.tools.intellij.openshift.test.ui;
 
 import com.intellij.remoterobot.fixtures.ComponentFixture;
 import com.intellij.remoterobot.search.locators.Locator;
+import org.apache.commons.io.IOUtils;
 import org.jboss.tools.intellij.openshift.test.ui.views.GettingStartedView;
 import org.jboss.tools.intellij.openshift.test.ui.views.OpenshiftView;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,7 +39,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class BaseUITest extends AbstractBaseTest {
 
 	@Test
-	public void openshiftExtensionTest() {
+	public void openshiftExtensionTest() throws IOException {
 		String CLUSTER_URL = System.getenv("CLUSTER_URL");
 
 		String CLUSTER_USER = System.getenv("CLUSTER_USER");
@@ -41,6 +47,13 @@ public class BaseUITest extends AbstractBaseTest {
 		String CLUSTER_PASSWORD = System.getenv("CLUSTER_PASSWORD");
 		Logger.getLogger("BASEUITest").log(Level.SEVERE, "CLUSTER_URL: " + CLUSTER_URL + "\nCLUSTER_USER: " + CLUSTER_USER + "\nCLUSTER_PASSWORD: " + CLUSTER_PASSWORD);
 		System.out.println("CLUSTER_URL: " + CLUSTER_URL + "\nCLUSTER_USER: " + CLUSTER_USER + "\nCLUSTER_PASSWORD: " + CLUSTER_PASSWORD);
+
+		File kube  = new File(System.getProperty("user.home") + File.separator + ".kube");
+		System.out.println("Kube list files: " + Arrays.toString(kube.listFiles()));
+
+		FileInputStream fis = new FileInputStream(System.getProperty("user.home") + File.separator + ".kube/config");
+		String data = IOUtils.toString(fis, "UTF-8");
+		System.out.println("Data: " + data);
 
 		waitFor(Duration.ofSeconds(10), Duration.ofSeconds(1), "The 'OpenShift' stripe button is not available.", () -> isStripeButtonAvailable("dffafaedf"));
 		waitFor(Duration.ofSeconds(10), Duration.ofSeconds(1), "The 'Kubernetes' stripe button is not available.", () -> isStripeButtonAvailable("Kubernetes"));
