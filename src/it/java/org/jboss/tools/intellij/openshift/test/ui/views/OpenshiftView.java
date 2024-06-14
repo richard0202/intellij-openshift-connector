@@ -73,7 +73,12 @@ public class OpenshiftView extends ContainerFixture {
 
     public JTreeFixture getOpenshiftConnectorTree() {
         System.out.println("PRINTING FINDALL:");
-        findAll(JTreeFixture.class, byXpath(TREE_CLASS)).forEach(jTreeFixture -> System.out.println("jTreeFixturePrint: " + jTreeFixture.getValueAtRow(0)));
+        try {
+            findAll(JTreeFixture.class, byXpath(TREE_CLASS)).forEach(jTreeFixture -> System.out.println("jTreeFixturePrint: " + jTreeFixture.getValueAtRow(0)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return find(JTreeFixture.class, byXpath(TREE_CLASS), Duration.ofSeconds(30));
     }
 
