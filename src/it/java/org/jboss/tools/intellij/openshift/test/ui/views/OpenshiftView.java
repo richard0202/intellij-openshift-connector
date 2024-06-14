@@ -72,14 +72,7 @@ public class OpenshiftView extends ContainerFixture {
     }
 
     public JTreeFixture getOpenshiftConnectorTree() {
-        System.out.println("PRINTING FINDALL:");
-        try {
-            findAll(JTreeFixture.class, byXpath(TREE_CLASS)).forEach(jTreeFixture -> System.out.println("jTreeFixturePrint: " + jTreeFixture.getValueAtRow(0)));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return find(JTreeFixture.class, byXpath(TREE_CLASS), Duration.ofSeconds(30));
+        return findAll(JTreeFixture.class, byXpath(TREE_CLASS)).get(0);
     }
 
     public void menuRightClickAndSelect(RemoteRobot robot, int row, String selection) {

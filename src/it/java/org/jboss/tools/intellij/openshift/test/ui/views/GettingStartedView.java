@@ -66,7 +66,7 @@ public class GettingStartedView extends ContainerFixture {
     }
 
     public JTreeFixture getGettingStartedTree() {
-        return find(JTreeFixture.class, byXpath(TREE_CLASS), Duration.ofSeconds(30));
+        return findAll(JTreeFixture.class, byXpath(TREE_CLASS)).get(0);
     }
 
     public ComponentFixture findEditorPaneFixture() {
