@@ -22,27 +22,5 @@ import org.junit.jupiter.api.BeforeAll;
  */
 public class AbstractPublicTest extends AbstractBaseTest {
 
-    private static boolean isLoggedOut = false;
 
-    @BeforeAll
-    public static void setUp() {
-        GettingStartedView view = robot.find(GettingStartedView.class);
-        view.closeView();
-        if (!isLoggedOut) {
-            backUpAndLogOut();
-        }
-    }
-
-    @AfterAll
-    public static void tearDown() {
-        if (isLoggedOut) {
-            KubeConfigUtility.restoreKubeConfig();
-        }
-    }
-
-    private static void backUpAndLogOut() {
-        KubeConfigUtility.backupKubeConfig();
-        logOut();
-        isLoggedOut = true;
-    }
 }
