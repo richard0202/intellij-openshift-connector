@@ -25,13 +25,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class GettingStartedTest extends AbstractPublicTest {
 
     @Test
-    @BeforeAll
-    public static void gettingStartedShowsOnStartup() {
-        GettingStartedView view = robot.find(GettingStartedView.class);
-        view.closeView();
-    }
-
-    @Test
     public void gettingStartedContainsAllItems() {
         GettingStartedView view = robot.find(GettingStartedView.class);
         view.openView();

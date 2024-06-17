@@ -12,6 +12,7 @@ package org.jboss.tools.intellij.openshift.test.ui.tests_public;
 
 import org.jboss.tools.intellij.openshift.test.ui.AbstractBaseTest;
 import org.jboss.tools.intellij.openshift.test.ui.utils.KubeConfigUtility;
+import org.jboss.tools.intellij.openshift.test.ui.views.GettingStartedView;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
@@ -25,6 +26,8 @@ public class AbstractPublicTest extends AbstractBaseTest {
 
     @BeforeAll
     public static void setUp() {
+        GettingStartedView view = robot.find(GettingStartedView.class);
+        view.closeView();
         if (!isLoggedOut) {
             backUpAndLogOut();
         }
