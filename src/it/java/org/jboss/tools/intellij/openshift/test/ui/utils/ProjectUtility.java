@@ -56,6 +56,7 @@ public class ProjectUtility {
     public static void selectNewProjectType(RemoteRobot robot, String projectType) {
         ComponentFixture newProjectTypeList = robot.findAll(ComponentFixture.class, byXpath("JBList", "//div[contains(@visible_text, 'FX')]")).get(0);
         newProjectTypeList.findText(projectType).click();
+
     }
 
     public static void closeTipDialogIfItAppears(RemoteRobot robot) {
