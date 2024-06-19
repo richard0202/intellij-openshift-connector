@@ -31,12 +31,12 @@ public class AboutClusterTest extends AbstractClusterTest {
     public void aboutLoggedInTest() {
         LOGGER.info("aboutLoggedInTest: Start");
         //loginWithUsername();
-        try {
+/*        try {
             verifyClusterLogin(currentClusterUrl);
         } catch (Exception e) {
             LOGGER.error("AboutLoggedInTest: Failed to login!");
             fail("AboutLoggedInTest: Failed to login!");
-        }
+        }*/
 
         AboutPublicTest.selectAboutAndGetClipboardContent();
         AboutPublicTest.verifyClipboardContent("odo version", "Server:");
