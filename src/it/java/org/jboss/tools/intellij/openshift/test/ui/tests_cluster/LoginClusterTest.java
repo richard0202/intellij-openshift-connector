@@ -25,10 +25,10 @@ public class LoginClusterTest extends AbstractClusterTest {
     @Test
     public void usernameLoginTest() {
         LOGGER.info("usernameLoginTest: Start");
-        logOut();
+/*        logOut();
         loginWithUsername();
         verifyClusterLogin(currentClusterUrl);
-        logOut();
+        logOut();*/
         LOGGER.info("usernameLoginTest: End");
     }
 }

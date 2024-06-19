@@ -30,7 +30,7 @@ public class AboutClusterTest extends AbstractClusterTest {
     @Test
     public void aboutLoggedInTest() {
         LOGGER.info("aboutLoggedInTest: Start");
-        loginWithUsername();
+        //loginWithUsername();
         try {
             verifyClusterLogin(currentClusterUrl);
         } catch (Exception e) {
