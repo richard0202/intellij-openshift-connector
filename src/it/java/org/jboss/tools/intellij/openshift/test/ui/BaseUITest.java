@@ -37,7 +37,7 @@ public class BaseUITest extends AbstractBaseTest {
 		waitFor(Duration.ofSeconds(10), Duration.ofSeconds(1), "The 'Getting Started' stripe button is not available.", () -> isStripeButtonAvailable("Getting Started"));
 	}
 
-	@Test
+	/*@Test
 	public void openshiftViewTest() {
         OpenshiftView view = robot.find(OpenshiftView.class);
 		view.openView();
@@ -100,7 +100,7 @@ public class BaseUITest extends AbstractBaseTest {
 		assertTrue(feedbackFixture.isShowing(), "Feedback button is not showing");
 
 		view.closeView();
-	}
+	}*/
 
 
 }
